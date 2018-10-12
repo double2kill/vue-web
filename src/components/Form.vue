@@ -33,7 +33,7 @@ export default {
           Accept: "application/json",
           "Content-Type": "application/json"
         },
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify(this.form)
       })
         .then(function(res) {
