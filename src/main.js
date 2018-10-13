@@ -24,12 +24,12 @@ new Vue({
   template: `
   <el-container>
     <el-header>
-      <el-menu default-active="1" class="el-menu-demo" mode="horizontal">
-        <el-menu-item index="1">
-          <router-link to="/form">Form</router-link>
+      <el-menu default-active="/form" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu-item index="/form">
+          Form
         </el-menu-item>
-        <el-menu-item index="2">
-          <router-link to="/table">Table</router-link>
+        <el-menu-item index="/table">
+          Table
         </el-menu-item>
       </el-menu>
     </el-header>
@@ -37,5 +37,12 @@ new Vue({
       <router-view class="view"></router-view>
     </el-main>
   </el-container>
-  `
+  `,
+  methods: {
+    handleSelect(key, keyPath) {
+      this.$router.push({
+        path: key
+      })
+    }
+  }
 }).$mount('#app')
