@@ -22,12 +22,20 @@ const router = new VueRouter({
 new Vue({
   router,
   template: `
-  <div>
-    <p>
-      <router-link to="/form">Go to Form</router-link>
-      <router-link to="/table">Go to Table</router-link>
-    </p>
-    <router-view class="view"></router-view>
-  </div>
+  <el-container>
+    <el-header>
+      <el-menu default-active="1" class="el-menu-demo" mode="horizontal">
+        <el-menu-item index="1">
+          <router-link to="/form">Form</router-link>
+        </el-menu-item>
+        <el-menu-item index="2">
+          <router-link to="/table">Table</router-link>
+        </el-menu-item>
+      </el-menu>
+    </el-header>
+    <el-main>
+      <router-view class="view"></router-view>
+    </el-main>
+  </el-container>
   `
 }).$mount('#app')
