@@ -7,7 +7,11 @@ import Table from './components/Table'
 Vue.config.productionTip = false
 
 const routes = [{
-    path: '/form',
+    path: '/table/:id',
+    name: 'table',
+    component: Form
+  }, {
+    path: '/tableAdd',
     component: Form
   },
   {
@@ -24,10 +28,7 @@ new Vue({
   template: `
   <el-container>
     <el-header>
-      <el-menu default-active="/form" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="/form">
-          Form
-        </el-menu-item>
+      <el-menu :default-active="defaultMenu" class="el-menu-demo" mode="horizontal" @select="handleSelect">
         <el-menu-item index="/table">
           Table
         </el-menu-item>
@@ -38,6 +39,14 @@ new Vue({
     </el-main>
   </el-container>
   `,
+  data() {
+    const {
+      path
+    } = this.$router.history.current
+    return {
+      defaultMenu: path
+    }
+  },
   methods: {
     handleSelect(key, keyPath) {
       this.$router.push({
