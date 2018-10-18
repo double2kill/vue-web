@@ -7,21 +7,32 @@
     <el-table border
       :data="tableData"
       style="width: 100%">
-      <el-table-column width="180"
+      <el-table-column width="60"
         prop="id"
         label="ID">
       </el-table-column>
-      <el-table-column width="180"
+      <el-table-column width="90"
         prop="name"
-        label="姓名">
+        label="姓名"
+        :filters="[{text: '刘晨', value: '刘晨'}, {text: '何腾欢', value: '何腾欢'}]"
+        :filter-method="filterName"
+      >
       </el-table-column>
-      <el-table-column width="360"
+      <el-table-column
         prop="cmd"
         label="命令">
+        <template slot-scope="scope">
+             <code class="code">{{scope.row.cmd}}</code>
+        </template>
       </el-table-column>
       <el-table-column
         prop="remark"
-        label="备注">
+        label="备注"
+      >
+        <template slot-scope="scope">
+          <span v-html="scope.row.remarkHtml">
+          </span>
+        </template>
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -78,8 +89,35 @@ export default {
       const data = await fetch(
         "http://www.greatwebtech.cn:3000/useful_cmds"
       ).then(res => res.json());
+      // data数据处理
+      data.forEach(item => {
+        item.remarkHtml = item.remark.replace(/\n/gm, "<br />");
+      });
       this.tableData = data;
+    },
+    filterName(value, row) {
+      return row.name === value;
     }
   }
 };
 </script>
+
+<style>
+.pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.code {
+  line-height: 1.8;
+  font-family: Menlo, Monaco, Consolas, Courier, monospace;
+  font-size: 12px;
+  background-color: #fafafa;
+  border: 1px solid #eaeefb;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  font-size: 90%;
+  padding: 2px 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+</style>
