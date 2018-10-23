@@ -2,18 +2,21 @@
   <div id="app">
     <Table />
     <Form />
+    <Tabs />
   </div>
 </template>
 
 <script>
 import Table from "./components/Table.vue";
 import Form from "./components/Form.vue";
+import Tabs from "./components/TabsTable/tabs.vue";
 
 export default {
   name: "app",
   components: {
     Table,
-    Form
+    Form,
+    Tabs
   },
   data() {
     return {

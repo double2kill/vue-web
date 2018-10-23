@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import './plugins/element.js'
 import Form from './components/Form'
 import Table from './components/Table'
+import Tabs from "./components/TabsTable/tabs.vue"
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,10 @@ const routes = [{
   {
     path: '/table',
     component: Table
+  },
+  {
+    path: '/tabs',
+    component: Tabs
   }
 ]
 const router = new VueRouter({
