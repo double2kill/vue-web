@@ -30,7 +30,7 @@ export default {
     this.fetchData();
   },
   methods: {
-    onSubmit(e) {
+    onSubmit() {
       const { id } = this.form;
       // 如果有id，那么是编辑，否则是新增
       const method = id ? "PATCH" : "POST";
@@ -46,7 +46,7 @@ export default {
         method: method,
         body: JSON.stringify(this.form)
       })
-        .then(res => {
+        .then(() => {
           this.$router.push({
             path: "/table"
           });

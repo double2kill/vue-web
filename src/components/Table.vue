@@ -91,7 +91,7 @@ export default {
       ).then(res => res.json());
       // data数据处理
       data.forEach(item => {
-        item.remarkHtml = item.remark.replace(/\n/gm, "<br />");
+        item.remarkHtml = item.remark && item.remark.replace(/\n/gm, "<br />");
       });
       this.tableData = data;
     },

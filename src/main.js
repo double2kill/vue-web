@@ -53,7 +53,7 @@ new Vue({
     }
   },
   methods: {
-    handleSelect(key, keyPath) {
+    handleSelect(key) {
       this.$router.push({
         path: key
       })
