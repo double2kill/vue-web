@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import URL from '../constants/url'
+
 export default {
   name: "web-form",
   data() {
@@ -34,7 +36,7 @@ export default {
       const { id } = this.form;
       // 如果有id，那么是编辑，否则是新增
       const method = id ? "PATCH" : "POST";
-      let url = "http://www.greatwebtech.cn:3000/useful_cmds";
+      let url = `${URL.CMD}/useful_cmds`;
       if (id) {
         url = `${url}/${id}`;
       }
@@ -64,7 +66,7 @@ export default {
         return;
       }
       const data = await fetch(
-        `http://www.greatwebtech.cn:3000/useful_cmds/${params.id}`
+        `${URL.CMD}/useful_cmds/${params.id}`
       ).then(res => res.json());
       delete data.update_time;
       delete data.created_time;

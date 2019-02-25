@@ -49,6 +49,8 @@
 
 
 <script>
+import URL from '../constants/url'
+
 export default {
   name: "app",
   data() {
@@ -75,7 +77,7 @@ export default {
       });
     },
     handleDel(item) {
-      fetch(`http://www.greatwebtech.cn:3000/useful_cmds/${item.id}`, {
+      fetch(`${URL.CMD}/useful_cmds/${item.id}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json"
@@ -87,7 +89,7 @@ export default {
     },
     async fetchData() {
       const data = await fetch(
-        "http://www.greatwebtech.cn:3000/useful_cmds"
+        `${URL.CMD}/useful_cmds`
       ).then(res => res.json());
       // data数据处理
       data.forEach(item => {

@@ -1,5 +1,6 @@
+import URL from '../constants/url'
 const defaultConfig = {
-    host: 'http://www.greatwebtech.cn:3000',
+    host: URL.CMD,
     method: 'GET',
 }
 export default (config) => {
@@ -13,7 +14,6 @@ export default (config) => {
         method,
         data
     } = config
-    debugger
     if (uri === undefined) {
         return Promise.reject(new Error('uri 不能为空'))
     }
